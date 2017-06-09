@@ -69,7 +69,8 @@
 			"name": "Temp. Ext.",
 			"apiBaseUrl": "http://localhost:8080/temperature-sensor",
 			"apiSuffixUrl": "",
-			"forceRefreshDelay": 0
+			"forceRefreshDelay": 0,
+			"optionCharacteristic":[]
 		}
 		
 		

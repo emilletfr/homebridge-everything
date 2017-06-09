@@ -1,6 +1,6 @@
 {
   "name": "homebridge-httpeverything",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "description": "http plugin for homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
   "keywords": [

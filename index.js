@@ -14,7 +14,8 @@ function Httpeverything(log, config) {
 	this.service = config.service;
 	this.apiBaseUrl = config.apiBaseUrl;
 	this.apiSuffixUrl = config.apiSuffixUrl || "";
-	this.forceRefreshDelay = config.forceRefreshDelay || 0
+	this.optionCharacteristic = config.optionCharacteristic || [];
+	this.forceRefreshDelay = config.forceRefreshDelay || 0;
 	this.log(this.name, this.apiroute);
 	this.enableSet = true;
 	//this.emitterActionNames = [];
@@ -116,6 +117,8 @@ Httpeverything.prototype = {
 		}
 
 		var counters = [];
+		var optionCounters = [];
+
 
 		for (var characteristicIndex in newService.characteristics) 
 		{
@@ -124,6 +127,21 @@ Httpeverything.prototype = {
 			counters[characteristicIndex] = makeHelper(characteristic);
 			characteristic.on('get', counters[characteristicIndex].getter.bind(this))
 			characteristic.on('set', counters[characteristicIndex].setter.bind(this));
+		}
+
+		for (var characteristicIndex in newService.optionalCharacteristics) 
+		{
+			var characteristic = newService.optionalCharacteristics[characteristicIndex];
+			var compactName = characteristic.displayName.replace(/\s/g, '');
+		
+			if(this.optionCharacteristic.indexOf(compactName) == -1)
+			{
+				continue;
+			}
+
+			optionCounters[characteristicIndex] = makeHelper(characteristic);
+			characteristic.on('get', optionCounters[characteristicIndex].getter.bind(this))
+			characteristic.on('set', optionCounters[characteristicIndex].setter.bind(this));
 		}
 	
 		function makeHelper(characteristic) {
