@@ -15,7 +15,6 @@ function Httpeverything(log, config) {
 	this.apiBaseUrl = config.apiBaseUrl;
 	this.apiSuffixUrl = config.apiSuffixUrl || "";
 	this.forceRefreshDelay = config.forceRefreshDelay || 0
-	this.log(this.name, this.apiroute);
 	this.enableSet = true;
 	//this.emitterActionNames = [];
 	this.statusEmitters = [];
