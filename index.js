@@ -40,13 +40,18 @@ HttpAccessory.prototype = {
 		var getDispatch = function (callback, characteristic) {
 			var actionName = "get" + characteristic.displayName.replace(/\s/g, '')
 			this.log("getDispatch:actionName: ", actionName); 
-			request.get({ url: this.apiBaseUrl + "/" + actionName + this.apiSuffixUrl }, function (err, response, body) {
-				if (!err && response.statusCode == 200) {
-					this.log("getDispatch:returnedvalue: ", JSON.parse(body).value);
-					callback(null, JSON.parse(body).value);
-				}
-				else { this.log("Error getting state: %s", actionName, err); callback(err); }
-			}.bind(this));
+            
+            if(actionName == "getName") callback(null, this.name);                                                               
+            else{                                                                                                                
+                                                                                                                                             
+            	request.get({ url: this.apiBaseUrl + "/" + actionName + this.apiSuffixUrl }, function (err, response, body) {
+                	if (!err && response.statusCode == 200) {                                    
+                    	this.log("getDispatch:returnedvalue: ", JSON.parse(body).value);     
+                        callback(null, JSON.parse(body).value);                              
+                    }                                                                                                                
+                    else { this.log("Error getting state: %s", actionName, err); callback(err); }                                    
+                }.bind(this));                                                                                                           
+            } 
 		}.bind(this);
 
 		var setDispatch = function (value, callback, characteristic) {
