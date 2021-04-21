@@ -1,11 +1,11 @@
-# homebridge http everything
+# homebridge http accessory
 
 Supports all devices on HomeBridge Platform / Bridges devices to http
 
 # Installation
 
 1. Install homebridge using: npm install -g homebridge
-2. Install this plugin using: npm install -g homebridge-httpeverything
+2. Install this plugin using: npm install -g homebridge-http-accessory
 3. Update your configuration file. See sample-config.json in this repository for a sample. 
 
 # Configuration
@@ -18,12 +18,12 @@ Configuration sample:
 		"name": "Homebridge",
 		"username": "C1:38:5A:AC:39:30",
 		"port": 51826,
-		"pin": "000-00-000"
+		"pin": "123-45-678"
 	},
 	"description": "This is an example configuration for the Everything Homebridge plugin",
 	"accessories": [
 		{
-			"accessory": "Httpeverything",
+			"accessory": "HttpAccessory",
 			"service": "Thermostat",
 			"name": "Thermostat (Maison)",
 			"apiBaseUrl": "http://localhost:8080/thermostat",
@@ -31,67 +31,19 @@ Configuration sample:
 			"forceRefreshDelay": 0
 		},
 		{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volet (Salon)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/0",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volet (Salle à manger)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/1",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volet (Bureau)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/2",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volet (Cuisine)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/3",
-			"forceRefreshDelay": 0
-		},
-				{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volet (Chambre)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/4",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "HumiditySensor",
-			"name": "Humidité",
-			"apiBaseUrl": "http://localhost:8080/humidity-sensor",
+			"accessory": "HttpAccessory",
+			"service": "Thermostat",
+			"name": "Fan",
+			"apiBaseUrl": "http://localhost:8080/fan",
 			"apiSuffixUrl": "",
-			"forceRefreshDelay": 0
+			"forceRefreshDelay": 0,
+			"optionCharacteristic": ["RotationSpeed"]
 		},
 		{
-			"accessory": "Httpeverything",
-			"service": "TemperatureSensor",
-			"name": "Temp. Ext.",
-			"apiBaseUrl": "http://localhost:8080/temperature-sensor",
-			"apiSuffixUrl": "",
-			"forceRefreshDelay": 0
-		}
-		,
-		{
-			"accessory": "Httpeverything",
+			"accessory": "HttpAccessory",
 			"service": "Switch",
 			"name": "Force Chauffe-eau",
-			"apiBaseUrl": "http://localhost:8080/force-hot-water",
+			"apiBaseUrl": "http://localhost:8080/switch",
 			"apiSuffixUrl": "",
 			"forceRefreshDelay": 0
 		}
